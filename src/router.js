@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 
+
 const routes =  [
   {
     path: "/",
@@ -13,12 +14,18 @@ const routes =  [
 //     name: "AllProducts",
 //     component: () => import("./components/AllProducts")
 //   },
-//   {
-//     path: "/login",
-//     alias: "/login",
-//     name: "login",
-//     component: () => import("./components/Login")
-//   }
+  {
+    path: "/login",
+    alias: "/login",
+    name: "login",
+    component: () => import("./components/Login")
+  },
+  {
+    path: "/MyProfile",
+    alias: "/MyProfile",
+    name: "MyProfile",
+    component: () => import("./components/MyProfile")
+  },
 ];
 
 const router = createRouter({
