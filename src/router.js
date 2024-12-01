@@ -26,6 +26,12 @@ const routes =  [
     name: "MyProfile",
     component: () => import("./components/MyProfile")
   },
+  {
+    path: "/MyPayment",
+    alias: "/MyPayment",
+    name: "MyPayment",
+    component: () => import("./components/MyPayment")
+  },
 ];
 
 const router = createRouter({

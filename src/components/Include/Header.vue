@@ -30,11 +30,12 @@
                         </a>
                         <div class="dropdown-menu bg ">
                             <!-- Show Login/Signup if user is not logged in -->
-                            <a v-if="!uid" href="/login"  class="dropdown-item a">Login</a>
+                            <a v-if="!uid" href="/login"  class="dropdown-item a ">Login</a>
                             <a v-if="!uid" href="/register" class="dropdown-item a">Register</a>
 
                             <!-- Show Logout and user-specific links if user is logged in -->
-                            <button v-if="uid" class="dropdown-item a" @click="logout">Logout</button>
+                            <button v-if="uid" class="dropdown-item a " @click="logout">Logout</button>
+                            <a v-if="uid" href="/MyPayment" class="dro,text-blackpdown-item a">My Payment</a>
                             <a v-if="uid" href="/MyProfile" class="dro,text-blackpdown-item a">My Profile</a>
                             <!-- <a v-if="uid" href="/MyOrder" class="dropdown-item">My Order</a> -->
                             
@@ -77,9 +78,10 @@ export default {
 </script>
 <style>
   .bg{
-    background-color: black
+    background-color: rgb(13, 12, 12)
   }
 .a:hover{
-    background-color: rgba(132, 96, 232, 0.732)
+    background-color: rgba(35, 59, 244, 0.732)
   }
+ 
 </style>
