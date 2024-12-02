@@ -2,17 +2,17 @@ import http from "../http-common";
 
 class DataService {
   login(data) {
-    return http.post("/login", data);
+    return http.post("/client/login", data);
   }
-//   addproduct(data) {
-//     return http.get("/addproduct", data);
-//   }
-//   faq(data) {
-//     return http.get("/faq", data);
-//   }
-//   customers(id) {
-//     return http.get(`/customers/${id}`);
-//   }
+  getPaymentApi(uid) {
+    return http.get(`/payment?client_id=${uid}`);
+  }
+  //   faq(data) {
+  //     return http.get("/faq", data);
+  //   }
+  //   customers(id) {
+  //     return http.get(`/customers/${id}`);
+  //   }
 
 
   findByTitle(title) {

@@ -1,43 +1,47 @@
 <template>
-  <div className="content-wrapper">
-  <div class="profile-page">
-    <div class="profile-header">
-      <img :src="user.profilePicture" alt="Profile Picture" class="profile-picture"/>
-      <div class="profile-info">
-        <h1>{{ user.name }}</h1>
-        <p class="email">{{ user.email }}</p>
-        <p class="bio">{{ user.bio }}</p>
+  <main id="main">
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 pt-5">
+            <h2>Payment status</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div className="content-wrapper my-3">
+      <div class="profile-page">
+        <div class="profile-header">
+          <div class="profile-info">
+            <h1>{{ data.name }}</h1>
+            <p class="email">{{ data.email }}</p>
+            <p class="bio">{{ data.bio }}</p>
+          </div>
+        </div>
+
+        <div class="profile-details">
+          <h2>Contact Information</h2>
+          <ul>
+            <li><strong>Phone:</strong> {{ data.contact_no }}</li>
+            <li><strong>Address:</strong> {{ data.address }}</li>
+          </ul>
+        </div>
+
+        <div class="profile-footer">
+          <button @click="editProfile">Edit Profile</button>
+        </div>
       </div>
     </div>
-
-    <div class="profile-details">
-      <h2>Contact Information</h2>
-      <ul>
-        <li><strong>Phone:</strong> {{ user.phone }}</li>
-        <li><strong>Address:</strong> {{ user.address }}</li>
-      </ul>
-    </div>
-
-    <div class="profile-footer">
-      <button @click="editProfile">Edit Profile</button>
-    </div>
-  </div>
-</div>
+  </main>
 </template>
 
 <script>
 export default {
   name: 'MyProfile',
   data() {
+    console.log(JSON.parse(sessionStorage.getItem('userName')));
     return {
-      user: {
-        name: 'TANBHIR HOSSIN',
-        email: 'tanbhirhossin@gmail.com',
-        bio: 'A passionate web developer with a love for Vue.js!',
-        phone: '+8801845631245',
-        address: 'NVIT, 2No gate, Chattogram',
-        profilePicture: 'https://via.placeholder.com/150' // Add a default placeholder
-      }
+      data:JSON.parse(sessionStorage.getItem('userName')),
     };
   },
   methods: {

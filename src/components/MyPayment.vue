@@ -1,56 +1,74 @@
 <template>
-   <div className="content-wrapper">
-    <h2 className="mb-4" style="margin-top: 100px; text-align: center;">Payment status</h2>
-        <table className="table table-striped table-bordered">
-            <thead className="table-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>event</th>
-                    <th>Pay Date</th>
-                    <th>Total Amount</th>
-                    <th>Pay Amount</th>
-                    <th>Due</th>
-                </tr>
-                
-                <tr>
-                    <td>tanvir</td>
-                    <td>IT conference</td>
-                    <td>15/11/2024</td>
-                    <td>500000</td>
-                    <td>400000</td>
-                    <td>100000</td>
-                  
-                </tr>
-                <tr>
-                    <td>tanvir</td>
-                    <td>IT conference</td>
-                    <td>15/11/2024</td>
-                    <td>500000</td>
-                    <td>400000</td>
-                    <td>100000</td>
-                  
-                </tr>
-                <tr>
-                    <td>tanvir</td>
-                    <td>IT conference</td>
-                    <td>15/11/2024</td>
-                    <td>500000</td>
-                    <td>400000</td>
-                    <td>100000</td>
-                  
-                </tr>
+   <main id="main">
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 pt-5">
+            <h2>Payment status</h2>
+          </div>
+          
+        </div>
+      </div>
+    </section>
 
-            </thead>
-        </table>
+    <section id="speakers" class="wow fadeInUp">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <table className="table table-striped table-bordered">
+                <thead className="table-dark">
+                    <tr>
+                        <th>event</th>
+                        <th>Pay Date</th>
+                        <th>Pay Amount</th>
+                    </tr>
+                    
+                    <tr v-for="d in datas" :key="d.id">
+                        <td>{{ d.event?.event_details }}</td>
+                        <td>{{ d.pay_date }}</td>
+                        <td>{{d.pay_amount}}</td>
+                    </tr>
 
-   </div>
+                </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
+        
+
+   </main>
 </template>
 
 <script>
+import DataService from "../services/DataService";
+
 export default {
   name: 'MyPayment',
-  props: {
-    msg: String
+  data() {
+    return {
+      datas:[]
+    };
+  },
+  methods: {
+    getPayment() {
+      let uid=sessionStorage.getItem('uid');
+      DataService.getPaymentApi(uid)
+        .then(response => {
+            console.log(response)
+          if(response.data.data)
+            this.datas= response.data.data;
+          else
+            alert(response.data.error)
+        })
+        .catch(e => {
+          console.log(e);
+      });
+    }
+  }, mounted() {
+    this.getPayment();
   }
 }
 </script>

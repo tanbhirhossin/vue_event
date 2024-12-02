@@ -5,9 +5,9 @@
           <h2 class="text-center text-primary mb-4">Login</h2>
           <form method="post" class="border p-4 bg-light rounded">
             <div class="mb-3">
-              <label htmlFor="email" class="form-label text-primary">Email</label>
-              <input type="text" class="form-control" id="email" name="email"
-                v-model="formData.email" placeholder="Email"/>
+              <label htmlFor="contact_number" class="form-label text-primary">Phone</label>
+              <input type="text" class="form-control" id="contact_number" name="contact_number"
+                v-model="formData.contact_number" placeholder="Email"/>
             </div>
             
             <div class="mb-3">
@@ -30,7 +30,7 @@
     data() {
       return {
         formData: {
-          email: "",
+          contact_number: "",
           password: "",
         },
       };
@@ -38,7 +38,7 @@
     methods: {
       login() {
         var data = {
-          email: this.formData.email,
+          contact_number: this.formData.contact_number,
           password: this.formData.password
         };
         DataService.login(data)
